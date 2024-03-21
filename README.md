@@ -1,10 +1,11 @@
 # Libssh2Prebuild
+
 ## Libssh2 with OpenSSL crypto prebuilt library backend for Apple platforms. Apple Silicon supported.
 
-
 ### Supported platforms and architectures
-| Platform          |  Architectures     |
-|-------------------|--------------------|
+
+| Platform          | Architectures      |
+| ----------------- | ------------------ |
 | macOS             | x86_64 arm64       |
 | iOS               | arm64 armv7 armv7s |
 | iOS Simulator     | x86_64 arm64       |
@@ -19,7 +20,7 @@
 Add line to you package.swift dependencies:
 
 ```
-.package(name: "CSSH", url: "https://github.com/DimaRU/Libssh2Prebuild.git", from: "1.9.0")
+.package(name: "CSSH", url: "https://github.com/TheTekton337/Libssh2Prebuild.git", .branch("master"))
 
 ```
 
@@ -42,9 +43,10 @@ Required Xcode 12.2, and [github cli](https://github.com/cli/cli). Intended to u
 
 1. Install gh: `brew install gh`
 2. Authorize gh: `gh auth`
-2. Fork and clone this repo
-3. Run `./script/build-xcframework.sh commit`
+3. Fork and clone this repo
+4. Run `./script/build-xcframework.sh commit`
 
 ### Credits:
-* Andrew Madsen for building OpenSSL for ARM/Apple silicon Macs [https://blog.andrewmadsen.com/2020/06/22/building-openssl-for.html](https://blog.andrewmadsen.com/2020/06/22/building-openssl-for.html)
-*  Tommaso Madonia for build script sample. [https://github.com/Frugghi/iSSH2](https://github.com/Frugghi/iSSH2)
+
+- Andrew Madsen for building OpenSSL for ARM/Apple silicon Macs [https://blog.andrewmadsen.com/2020/06/22/building-openssl-for.html](https://blog.andrewmadsen.com/2020/06/22/building-openssl-for.html)
+- Tommaso Madonia for build script sample. [https://github.com/Frugghi/iSSH2](https://github.com/Frugghi/iSSH2)

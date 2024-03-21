@@ -1,8 +1,9 @@
-Libssh2 1.9.0 build.
+Libssh2 1.11.0 build.
 
 ### Supported platforms and architectures
-| Platform          |  Architectures     |
-|-------------------|--------------------|
+
+| Platform          | Architectures      |
+| ----------------- | ------------------ |
 | macOS             | x86_64 arm64       |
 | iOS               | arm64 armv7 armv7s |
 | iOS Simulator     | x86_64 arm64       |

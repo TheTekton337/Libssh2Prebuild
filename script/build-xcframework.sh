@@ -43,8 +43,8 @@ set -e
 #Config
 
 export BUILD_THREADS=$(sysctl hw.ncpu | awk '{print $2}')
-LIBSSH_TAG=1.9.0
-LIBSSL_TAG=OpenSSL_1_1_1h
+LIBSSH_TAG=1.11.0
+LIBSSL_TAG=OpenSSL_1_1_1w
 
 TAG=$LIBSSH_TAG+$LIBSSL_TAG
 ZIPNAME=CSSH-$TAG.xcframework.zip
@@ -69,7 +69,6 @@ if [[ -d "$OPENSSL_SOURCE" ]] && [[ -d "$LIBSSH_SOURCE" ]]; then
 else
   fetchSource "https://github.com/libssh2/libssh2/releases/download/libssh2-$LIBSSH_TAG/libssh2-$LIBSSH_TAG.tar.gz" "libssh2.tar.gz" "$LIBSSH_SOURCE"
   fetchSource "https://github.com/openssl/openssl/archive/$LIBSSL_TAG.tar.gz" "openssl.tar.gz" "$OPENSSL_SOURCE"
-  patch -d "$OPENSSL_SOURCE" -p 0 -i "$ROOT_PATH/script/patch-ssl.txt"
 fi
 
 #Build
