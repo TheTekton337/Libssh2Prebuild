@@ -46,10 +46,12 @@ export BUILD_THREADS=$(sysctl hw.ncpu | awk '{print $2}')
 LIBSSH_TAG=1.11.0
 LIBSSL_TAG=OpenSSL_1_1_1w
 
-TAG=$LIBSSH_TAG+$LIBSSL_TAG
-ZIPNAME=CSSH-$TAG.xcframework.zip
+# NOTE: tag name must be in format X.Y.Z with latest XCode/Swift.
+# TAG=$LIBSSH_TAG+$LIBSSL_TAG
+SPM_TAG=$LIBSSH_TAG
+ZIPNAME=CSSH-$SPM_TAG.xcframework.zip
 GIT_REMOTE_URL_UNFINISHED=`git config --get remote.origin.url|sed "s=^ssh://==; s=^https://==; s=:=/=; s/git@//; s/.git$//;"`
-DOWNLOAD_URL=https://$GIT_REMOTE_URL_UNFINISHED/releases/download/$TAG/$ZIPNAME
+DOWNLOAD_URL=https://$GIT_REMOTE_URL_UNFINISHED/releases/download/$SPM_TAG/$ZIPNAME
 
 export ROOT_PATH=$(cd "$(dirname "$0")/.."; pwd -P)
 pushd $ROOT_PATH > /dev/null
@@ -113,6 +115,9 @@ zip --recurse-paths -X --quiet $ZIPNAME CSSH.xcframework
 rm -rf CSSH.xcframework
 CHECKSUM=`shasum -a 256 -b $ZIPNAME | awk '{print $1}'`
 
+echo "Zip Checksum: $CHECKSUM"
+
+rm Package.swift
 cat >Package.swift << EOL
 // swift-tools-version:5.3
 
@@ -131,14 +136,17 @@ let package = Package(
 )
 EOL
 
+cat Package.swift
+
 if [[ $1 == "commit" ]]; then
 
 git add Package.swift
-git commit -m "Build $TAG"
-git tag $TAG
+git commit -m "Build $SPM_TAG"
+# git tag $TAG
+git tag $SPM_TAG
 git push
 git push --tags
-gh release create "$TAG" $ZIPNAME --title "$TAG" --notes-file $ROOT_PATH/script/release-note.md
+gh release create "$SPM_TAG" $ZIPNAME --title "$SPM_TAG" --notes-file $ROOT_PATH/script/release-note.md
 
 fi
 
