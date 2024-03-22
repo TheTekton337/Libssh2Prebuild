@@ -140,6 +140,9 @@ cat Package.swift
 
 if [[ $1 == "commit" ]]; then
 
+sed -i '' "s/spec.version[[:space:]]*=[[:space:]]*'[0-9]*\.[0-9]*\.[0-9]*'/spec.version = '$SPM_TAG'/" Libssh2Prebuild.podspec
+
+git add Libssh2Prebuild.podspec
 git add Package.swift
 git commit -m "Build $SPM_TAG"
 # git tag $TAG
