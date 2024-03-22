@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'Libssh2Prebuild'
+  spec.name         = 'CSSH'
   spec.version      = '1.11.0'
   spec.summary      = 'Prebuilt Libssh2 as an XCFramework for easy integration into iOS and macOS projects.'
   spec.description  = <<-DESC
