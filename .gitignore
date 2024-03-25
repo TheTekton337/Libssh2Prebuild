@@ -1,6 +1,8 @@
 .DS_Store
 /.swiftpm
 /*.zip
+/*.xcframework
+/*.log
 /.build
 /build
 /temp
