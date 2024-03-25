@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   spec.author       = { 'Terrance Wood' => 'pntkl@ixqus.com' }
   spec.platforms    = { :ios => '13.0', :osx => '10.15' }
-  spec.source       = { :http => 'https://github.com/TheTekton337/Libssh2Prebuild/releases/download/#{spec.version}/CSSH-#{spec.version}.xcframework.zip' }
+  spec.source       = { :http => "https://github.com/TheTekton337/Libssh2Prebuild/releases/download/#{spec.version}/CSSH-#{spec.version}.xcframework.zip" }
   spec.swift_version = '5.0'
   spec.vendored_frameworks = 'CSSH.xcframework'
 end
